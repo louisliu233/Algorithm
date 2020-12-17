@@ -32,3 +32,19 @@ var rightSideView = function(root) {
 };
 // @lc code=end
 
+// 非递归
+var rightSideView = function(root) {
+  if(!root)return []
+  let queue = [root]
+  let res = []
+  while(queue.length){
+    res.push(queue[0].val)
+    let len = queue.length
+    while(len--){
+      let node = queue.shift()
+      if(node.right)queue.push(node.right)
+      if(node.left)queue.push(node.left)
+    }
+  }
+  return res
+};

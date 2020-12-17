@@ -17,6 +17,27 @@
  * @return {number[][]}
  */
 var levelOrder = function(root) {
+  if(!root)return []
+  let queue = [root]
+  let level = 0
+  let res = []
+  while(queue.length){
+    res.push([])
+    let len = queue.length
+    while(len--){
+      let node = queue.shift()
+      res[level].push(node.val)
+      if(node.left)queue.push(node.left)
+      if(node.right)queue.push(node.right)
+    }
+    level++
+  }
+  return res
+};
+// @lc code=end
+
+// 递归
+var levelOrder = function(root) {
   let res = [];
   function recurtion(root, level) {
     if (!root) return
@@ -28,5 +49,4 @@ var levelOrder = function(root) {
   recurtion(root, 0);
   return res
 };
-// @lc code=end
 

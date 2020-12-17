@@ -34,3 +34,23 @@ var zigzagLevelOrder = function(root) {
 };
 // @lc code=end
 
+// 非递归
+var zigzagLevelOrder = function(root) {
+  if(!root)return []
+  let queue = [root]
+  let level = 0
+  let res = []
+  while(queue.length){
+    res.push([])
+    let len = queue.length
+    while(len--){
+      let node = queue.shift()
+      res[level].push(node.val)
+      if(node.left)queue.push(node.left)
+      if(node.right)queue.push(node.right)
+    }
+    if(level % 2 === 0)res[level].reverse()
+    level++
+  }
+  return res
+};
