@@ -26,7 +26,7 @@ var partition = function(s) {
 
     function isPalindrome(start, end) {
       let i = start, j = end
-      while(i < end) {
+      while(i < j) {
         if (s[i++] !== s[j--])return false
       }
       return true
